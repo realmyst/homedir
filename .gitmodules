@@ -1,0 +1,51 @@
+[submodule "vimfiles/bundle/vim-capybara"]
+	path = vimfiles/bundle/vim-capybara
+	url = git://github.com/asux/vim-capybara.git
+[submodule "vimfiles/bundle/actionscript"]
+	path = vimfiles/bundle/actionscript
+	url = git://github.com/endel/actionscript.vim.git
+[submodule "vimfiles/bundle/vim-rvm"]
+	path = vimfiles/bundle/vim-rvm
+	url = git://github.com/tpope/vim-rvm.git
+[submodule "vimfiles/bundle/vim-bundler"]
+	path = vimfiles/bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "vimfiles/bundle/vim-yankring"]
+	path = vimfiles/bundle/vim-yankring
+	url = git://github.com/chrismetcalf/vim-yankring.git
+[submodule "vimfiles/bundle/gist-vim"]
+	path = vimfiles/bundle/gist-vim
+	url = http://github.com/mattn/gist-vim.git
+[submodule "vimfiles/bundle/gundo"]
+	path = vimfiles/bundle/gundo
+	url = http://github.com/sjl/gundo.vim.git
+[submodule "vim-jquery"]
+	path = vim-jquery
+	url = git://github.com/itspriddle/vim-jquery.git
+[submodule "vimfiles/bundle/vim-jquery"]
+	path = vimfiles/bundle/vim-jquery
+	url = git://github.com/itspriddle/vim-jquery.git
+[submodule "vimfiles/bundle/html5"]
+	path = vimfiles/bundle/html5
+	url = git://github.com/othree/html5.vim.git
+[submodule "vimfiles/bundle/vim-jade"]
+	path = vimfiles/bundle/vim-jade
+	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "vimfiles/bundle/vim-colors-solarized"]
+	path = vimfiles/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vimfiles/bundle/zencoding-vim"]
+	path = vimfiles/bundle/zencoding-vim
+	url = git://github.com/mattn/zencoding-vim.git
+[submodule "vimfiles/bundle/clojure"]
+	path = vimfiles/bundle/clojure
+	url = git://github.com/vim-scripts/VimClojure.git
+[submodule "vimfiles/bundle/grails"]
+	path = vimfiles/bundle/grails
+	url = git://github.com/felipero/grails-vim.git
+[submodule "vimfiles/bundle/scala"]
+	path = vimfiles/bundle/scala
+	url = git://github.com/akhil/scala-vim-bundle.git
+[submodule "vimfiles/bundle/liftweb"]
+	path = vimfiles/bundle/liftweb
+	url = git://github.com/Shadowfiend/liftweb-vim.git
