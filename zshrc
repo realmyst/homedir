@@ -1,8 +1,8 @@
 source ~/.zshkit/rc
 umask 2
 
-[[ -s '/usr/local/lib/rvm' ]] && source '/usr/local/lib/rvm'
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -d '/usr/local/rvm' ]] && source '/usr/local/rvm/scripts/rvm'
+[[ -d "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 alias ssh-cp1251='luit -encoding CP1251 ssh'
 
