@@ -49,3 +49,93 @@
 [submodule "vimfiles/bundle/liftweb"]
 	path = vimfiles/bundle/liftweb
 	url = git://github.com/Shadowfiend/liftweb-vim.git
+[submodule "vimfiles/bundle/abolish"]
+	path = vimfiles/bundle/abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "vimfiles/bundle/vim-preview"]
+	path = vimfiles/bundle/vim-preview
+	url = git://github.com/greyblake/vim-preview.git
+[submodule "vimfiles/bundle/vim-textobj-rubybloc"]
+	path = vimfiles/bundle/vim-textobj-rubybloc
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "vimfiles/bundle/vim-textobj-user"]
+	path = vimfiles/bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule "vimfiles/bundle/securemodelines"]
+	path = vimfiles/bundle/securemodelines
+	url = git://github.com/ciaranm/securemodelines.git
+[submodule "vimfiles/bundle/vim-ruby-sinatra"]
+	path = vimfiles/bundle/vim-ruby-sinatra
+	url = git://github.com/hallison/vim-ruby-sinatra.git
+[submodule "vimfiles/bundle/supertab"]
+	path = vimfiles/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "vimfiles/bundle/vim-coffee-script"]
+	path = vimfiles/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "vimfiles/bundle/ack"]
+	path = vimfiles/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "vimfiles/bundle/scss-syntax"]
+	path = vimfiles/bundle/scss-syntax
+	url = http://github.com/cakebaker/scss-syntax.vim.git
+[submodule "vimfiles/bundle/unimpaired"]
+	path = vimfiles/bundle/unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "vimfiles/bundle/vim-ruby"]
+	path = vimfiles/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vimfiles/bundle/textile"]
+	path = vimfiles/bundle/textile
+	url = git://github.com/timcharper/textile.vim.git
+[submodule "vimfiles/bundle/Command-T"]
+	path = vimfiles/bundle/Command-T
+	url = git://github.com/wincent/Command-T.git
+[submodule "vimfiles/bundle/syntastic"]
+	path = vimfiles/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "vimfiles/bundle/snipmate"]
+	path = vimfiles/bundle/snipmate
+	url = git://github.com/akitaonrails/snipmate.vim.git
+[submodule "vimfiles/bundle/endwise"]
+	path = vimfiles/bundle/endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "vimfiles/bundle/git"]
+	path = vimfiles/bundle/git
+	url = git://github.com/tpope/vim-git.git
+[submodule "vimfiles/bundle/vividchalk"]
+	path = vimfiles/bundle/vividchalk
+	url = git://github.com/tpope/vim-vividchalk.git
+[submodule "vimfiles/bundle/markdown"]
+	path = vimfiles/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "vimfiles/bundle/fugitive"]
+	path = vimfiles/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vimfiles/bundle/ragtag"]
+	path = vimfiles/bundle/ragtag
+	url = git://github.com/tpope/vim-ragtag.git
+[submodule "vimfiles/bundle/NERD_commenter"]
+	path = vimfiles/bundle/NERD_commenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vimfiles/bundle/NERD_tree"]
+	path = vimfiles/bundle/NERD_tree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vimfiles/bundle/surround"]
+	path = vimfiles/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "vimfiles/bundle/haml"]
+	path = vimfiles/bundle/haml
+	url = git://github.com/tpope/vim-haml.git
+[submodule "vimfiles/bundle/cucumber"]
+	path = vimfiles/bundle/cucumber
+	url = git://github.com/tpope/vim-cucumber.git
+[submodule "vimfiles/bundle/rails"]
+	path = vimfiles/bundle/rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "vimfiles/snippets"]
+	path = vimfiles/snippets
+	url = git://github.com/asux/snipmate-snippets.git
+[submodule "vimfiles/bundle/ctrlp"]
+	path = vimfiles/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
