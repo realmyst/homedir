@@ -19,9 +19,6 @@
 [submodule "vimfiles/bundle/gundo"]
 	path = vimfiles/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
-[submodule "vim-jquery"]
-	path = vim-jquery
-	url = git://github.com/itspriddle/vim-jquery.git
 [submodule "vimfiles/bundle/vim-jquery"]
 	path = vimfiles/bundle/vim-jquery
 	url = git://github.com/itspriddle/vim-jquery.git
