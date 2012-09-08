@@ -13,9 +13,6 @@
 [submodule "vimfiles/bundle/vim-yankring"]
 	path = vimfiles/bundle/vim-yankring
 	url = git://github.com/chrismetcalf/vim-yankring.git
-[submodule "vimfiles/bundle/gist-vim"]
-	path = vimfiles/bundle/gist-vim
-	url = http://github.com/mattn/gist-vim.git
 [submodule "vimfiles/bundle/gundo"]
 	path = vimfiles/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
