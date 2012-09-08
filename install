@@ -1,33 +1,41 @@
 #!/bin/bash
 
-#vim setup
-if [ -d "~/.vim" ]; then
-    mv "~/.vim" "~/.vim.backup"
-fi
-cp -R vimfiles ~/.vim
+user=$1
 
-if [ -e "~/.vimrc" ]; then
-    mv "~/.vimrc" "~/.vimrc.backup"
+if [ $user = "root" ]; then
+    user_home="/$user"
+else
+    user_home="$user_home"
 fi
-cp -f vimrc ~/.vimrc
+
+#vim setup
+if [ -d "$user_home/.vim" ]; then
+    mv "$user_home/.vim" "$user_home/.vim.backup"
+fi
+cp -R vimfiles $user_home/.vim
+
+if [ -e "$user_home/.vimrc" ]; then
+    mv "$user_home/.vimrc" "$user_home/.vimrc.backup"
+fi
+cp -f vimrc $user_home/.vimrc
 
 #shell setup
-if [ -d "~/.zshkit" ]; then
-    mv "~/.zshkit" "~/.zshkit.backup"
+if [ -d "$user_home/.zshkit" ]; then
+    mv "$user_home/.zshkit" "$user_home/.zshkit.backup"
 fi
-cp -R zshkit ~/.zshkit
+cp -R zshkit $user_home/.zshkit
 
-if [ -e "~/.zshrc" ]; then
-    mv "~/.zshrc" "~/.zshrc.backup"
+if [ -e "$user_home/.zshrc" ]; then
+    mv "$user_home/.zshrc" "$user_home/.zshrc.backup"
 fi
-cp -f zshrc ~/.zshrc
+cp -f zshrc $user_home/.zshrc
 
-if [ -e "~/.zshenv" ]; then
-    mv "~/.zshenv" "~/.zshenv.backup"
+if [ -e "$user_home/.zshenv" ]; then
+    mv "$user_home/.zshenv" "$user_home/.zshenv.backup"
 fi
-cp -f zshenv ~/.zshenv
+cp -f zshenv $user_home/.zshenv
 
-if [ -e "~/.zshrc.local" ]; then
-    mv "~/.zshrc.local" "~/.zshrc.local.backup"
+if [ -e "$user_home/.zshrc.local" ]; then
+    mv "$user_home/.zshrc.local" "$user_home/.zshrc.local.backup"
 fi
-cp -f zshrc.local ~/.zshrc.local
+cp -f zshrc.local $user_home/.zshrc.local
