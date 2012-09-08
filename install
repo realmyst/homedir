@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#vim setup
+if [ -d "~/.vim" ]; then
+    mv "~/.vim" "~/.vim.backup"
+fi
+cp -R vimfiles ~/.vim
+
+if [ -e "~/.vimrc" ]; then
+    mv "~/.vimrc" "~/.vimrc.backup"
+fi
+cp "vimrc" "~/.vimrc"
+
+#shell setup
+if [ -d "~/.zshkit" ]; then
+    mv "~/.zshkit" "~/.zshkit.backup"
+fi
+cp -R "zshkit" "~/.zshkit"
+
+if [ -e "~/.zshrc" ]; then
+    mv "~/.zshrc" "~/.zshrc.backup"
+fi
+cp "zshrc" "~/.zshrc"
+
+if [ -e "~/.zshenv" ]; then
+    mv "~/.zshenv" "~/.zshenv.backup"
+fi
+cp "zshenv" "~/.zshenv"
+
+if [ -e "~/.zshrc.local" ]; then
+    mv "~/.zshrc.local" "~/.zshrc.local.backup"
+fi
+cp "zshrc.local" "~/.zshrc.local"
