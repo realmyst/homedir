@@ -133,3 +133,6 @@
 [submodule "vimfiles/bundle/ctrlp"]
 	path = vimfiles/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule "vimfiles/plugin/gist-vim"]
+	path = vimfiles/plugin/gist-vim
+	url = http://github.com/mattn/gist-vim.git
