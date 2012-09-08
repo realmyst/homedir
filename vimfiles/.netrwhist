@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/tt/rails'
+let g:netrw_dirhist_2='/System/Library/Frameworks/ruby.framework'
+let g:netrw_dirhist_3='/Users/realmyst/.rvm/gems/ruby-1.9.3-p194/gems/unicorn-4.2.1'
+let g:netrw_dirhist_4='/Users/realmyst/.rvm/gems/ruby-1.9.3-p194/gems/rails-3.2.2'
