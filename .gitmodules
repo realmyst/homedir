@@ -136,3 +136,6 @@
 [submodule "vimfiles/plugin/gist-vim"]
 	path = vimfiles/plugin/gist-vim
 	url = http://github.com/mattn/gist-vim.git
+[submodule "vimfiles/bundle/webapi"]
+	path = vimfiles/bundle/webapi
+	url = git://github.com/mattn/webapi-vim.git
