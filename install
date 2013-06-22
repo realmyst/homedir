@@ -4,6 +4,8 @@ user=$1
 
 if [ $user = "root" ]; then
     user_home="/$user"
+elif [ -d "/Users" ]; then
+    user_home="/Users/$user"
 else
     user_home="/home/$user"
 fi
@@ -12,30 +14,30 @@ fi
 if [ -d "$user_home/.vim" ]; then
     mv "$user_home/.vim" "$user_home/.vim.backup"
 fi
-cp -R vimfiles $user_home/.vim
+cp -R vimfiles $user_home/.vim/
 
 if [ -e "$user_home/.vimrc" ]; then
     mv "$user_home/.vimrc" "$user_home/.vimrc.backup"
 fi
-cp -f vimrc $user_home/.vimrc
+cp -f ./vimrc $user_home/.vimrc
 
 #shell setup
 if [ -d "$user_home/.zshkit" ]; then
     mv "$user_home/.zshkit" "$user_home/.zshkit.backup"
 fi
-cp -R zshkit $user_home/.zshkit
+cp -R ./zshkit $user_home/.zshkit
 
 if [ -e "$user_home/.zshrc" ]; then
     mv "$user_home/.zshrc" "$user_home/.zshrc.backup"
 fi
-cp -f zshrc $user_home/.zshrc
+cp -f ./zshrc $user_home/.zshrc
 
 if [ -e "$user_home/.zshenv" ]; then
     mv "$user_home/.zshenv" "$user_home/.zshenv.backup"
 fi
-cp -f zshenv $user_home/.zshenv
+cp -f ./zshenv $user_home/.zshenv
 
 if [ -e "$user_home/.zshrc.local" ]; then
     mv "$user_home/.zshrc.local" "$user_home/.zshrc.local.backup"
 fi
-cp -f zshrc.local $user_home/.zshrc.local
+cp -f ./zshrc.local $user_home/.zshrc.local
