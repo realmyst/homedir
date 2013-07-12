@@ -22,16 +22,19 @@ if [[ ! ( -d "$USER_HOME") && ($? != true) ]]; then
     exit 1
 fi
 
-##vim setup
+#====================================================================
+# vim setup
+#====================================================================
+
+echo
+echo "Vim setup..."
+
 TIMESTAMP=`date +%s`
 if [ -e "$USER_HOME/.vim" ]; then
     mv "$USER_HOME/.vim" "$USER_HOME/.vim.backup.$TIMESTAMP"
 fi
 echo "Initialize '$USER_HOME/.vim/'"
 cp -R vimfiles $USER_HOME/.vim/
-#echo "Initialize submodule..."
-#cd $USER_HOME/.vim/
-#exec 'git submodule update --init'
 
 if [ -e "$USER_HOME/.vimrc" ]; then
     mv "$USER_HOME/.vimrc" "$USER_HOME/.vimrc.backup.$TIMESTAMP"
@@ -39,7 +42,18 @@ fi
 echo "Initialize '$USER_HOME/.vimrc'"
 cp -f ./vimrc $USER_HOME/.vimrc
 
-##shell setup
+echo "===================================================================="
+echo "Launch vim and run :BundleInstall for setup plugins"
+echo "You can change your plugins list by editing ~/.vim.bundle"
+echo "===================================================================="
+
+#====================================================================
+# shell setup
+#====================================================================
+
+echo
+echo "Shell setup..."
+
 if [ -d "$USER_HOME/.zshkit" ]; then
     mv "$USER_HOME/.zshkit" "$USER_HOME/.zshkit.backup.$TIMESTAMP"
 fi
@@ -64,7 +78,13 @@ fi
 echo "Initialize $USER_HOME/.zshrc.local"
 cp -f ./zshrc.local $USER_HOME/.zshrc.local
 
-##gitconfig setup
+#====================================================================
+# gitconfig setup
+#====================================================================
+
+echo
+echo "Git setup..."
+
 cp -f ./gitconfig $USER_HOME/.gitconfig
 cp -f ./gitignore $USER_HOME/.gitignore
 

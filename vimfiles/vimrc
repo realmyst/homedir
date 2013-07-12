@@ -1,22 +1,34 @@
 "avoiding annoying CSApprox warning message
-let g:CSApprox_verbose_level = 0
-
-"necessary on some Linux distros for pathogen to properly load bundles
-filetype on
-filetype off
-
-"load pathogen managed plugins
-call pathogen#infect()
+"let g:CSApprox_verbose_level = 0
 
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible
 
-"allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set nowrap
+
+filetype on
+filetype off
+
+"load ftplugins and indent files
+filetype plugin on
+filetype indent on
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+if filereadable(expand("~/.vim/bundle.vimrc"))
+  source ~/.vim/bundle.vimrc
+endif
+
+" allow to use backspace instead of "x"
+set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 "store lots of :cmdline history
-set history=1000
+set nobackup
+set history=500
+set ve=all
 
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
@@ -28,18 +40,114 @@ set number      "add line numbers
 set showbreak=...
 set wrap linebreak nolist
 
-"mapping for command key to map navigation thru display lines instead
-"of just numbered lines
-vmap <D-j> gj
-vmap <D-k> gk
-vmap <D-4> g$
-vmap <D-6> g^
-vmap <D-0> g^
-nmap <D-j> gj
-nmap <D-k> gk
-nmap <D-4> g$
-nmap <D-6> g^
-nmap <D-0> g^
+"search
+set ignorecase
+set smartcase
+
+set completeopt-=preview
+set completeopt+=longest
+set mps-=[:]
+
+set viminfo='10,\"100,:20,%,n~/.viminfo
+
+
+set background=dark
+
+" Показывать положение курсора всё время.
+set ruler
+
+" Кодировка текста по умолчанию
+set encoding=utf8
+set fileencoding=utf8
+set termencoding=utf8
+
+" Не выгружать буфер, когда переключаемся на другой
+" Это позволяет редактировать несколько файлов в один и тот же момент без необходимости сохранения каждый раз
+" когда переключаешься между ними
+set hidden
+
+" Сделать строку команд высотой в одну строку
+"set ch=1
+
+" Скрывать указатель мыши, когда печатаем
+set mousehide
+
+" Fix <Enter> for comment
+set fo+=cr
+
+" Комманды в режиме кириллицы
+map ё `
+map й q
+map ц w
+map у e
+map к r
+map е t
+map н y
+map г u
+map ш i
+map щ o
+map з p
+map х [
+map ъ ]
+map ф a
+map ы s
+map в d
+map а f
+map п g
+map р h
+map о j
+map л k
+map д l
+map ж ;
+map э '
+map я z
+map ч x
+map с c
+map м v
+map и b
+map т n
+map ь m
+map б ,
+map ю .
+map Ё ~
+map Й Q
+map Ц W
+map У E
+map К R
+map Е T
+map Н Y
+map Г U
+map Ш I
+map Щ O
+map З P
+map Х {
+map Ъ }
+map Ф A
+map Ы S
+map В D
+map А F
+map П G
+map Р H
+map О J
+map Л K
+map Д L
+map Ж :
+map Э "
+map Я Z
+map Ч X
+map С C
+map М V
+map И B
+map Т N
+map Ь M
+map Б <
+map Ю >
+
+" Опции сесссий
+set sessionoptions=curdir,buffers,tabpages
+
+" Заставляем shift-insert работать как в Xterm
+map <S-Insert> <MiddleMouse>
 
 "add some line space for easy reading
 set linespace=4
@@ -51,6 +159,38 @@ set visualbell t_vb=
 nmap <Down> gj
 nmap <Up> gk
 set fo=l
+
+" Слова откуда будем завершать
+set complete=""
+" Из текущего буфера
+set complete+=.
+" Из словаря
+set complete+=k
+" Из других открытых буферов
+set complete+=b
+" из тегов
+"set complete+=t
+"
+au BufRead,BufNewFile *.phps set filetype=php
+au BufRead,BufNewFile *.thtml set filetype=php
+au BufRead,BufNewFile *.pl set filetype=perl
+au BufRead,BufNewFile *.pm set filetype=perl
+au BufRead,BufNewFile *.rb set filetype=ruby
+au BufRead,BufNewFile *.hrl set filetype=erlang
+au BufRead,BufNewFile *.scss set filetype=sass
+au BufNewFile,BufRead *.php let b:optionsset=0
+au BufNewFile,BufRead *.php let b:PHP_autoformatcomment=0
+
+" Поиск и замена слова под курсором
+"nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
+
+"copy the current visual selection to ~/.vbuf "
+vmap <leader>y :w! ~/.vbuf<cr>
+""copy the current line to the buffer file if no visual selection
+nmap <leader>y :.w! ~/.vbuf<cr>
+"paste the contents of the buffer file
+nmap <leader>v :r ~/.vbuf<cr>
+""</cr></leader></cr></leader></cr></leader>"
 
 "statusline setup
 set statusline=%f       "tail of the filename
@@ -178,19 +318,36 @@ function! s:Median(nums)
 endfunction
 
 "indent settings
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
 set autoindent
 
+" Включаем "умные" отспупы ( например, автоотступ после {)
+set smartindent
+
+au FileType ruby,scss,cucumber set shiftwidth=2
+au FileType ruby,scss,cucumber set softtabstop=2
+au FileType ruby,scss,cucumber set tabstop=2
+
 "folding settings
-set foldmethod=indent   "fold based on indent
+set foldmethod=manual   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+
+" Меню выбора кодировки текста (koi8-r, cp1251, cp866, utf8)
+set wildmenu
+set wcm=<Tab>
+menu Encoding.koi8-r :e ++enc=koi8-r<CR>
+menu Encoding.windows-1251 :e ++enc=cp1251<CR>
+menu Encoding.cp866 :e ++enc=cp866<CR>
+menu Encoding.utf-8 :e ++enc=utf8 <CR>
+map <F3>       :emenu Encoding.<TAB>
 
 "display tabs and trailing spaces
 "set list
@@ -204,16 +361,13 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
-"load ftplugins and indent files
-filetype plugin on
-filetype indent on
-
 "turn on syntax highlighting
 syntax on
 
 "some stuff to get the mouse going in term
-set mouse=a
+set mouse=v
 set ttymouse=xterm2
+set mousemodel=popup
 
 "hide buffers when not displayed
 set hidden
@@ -268,14 +422,16 @@ endif
 " nmap <silent> <Leader>q <Plug>PeepOpen
 
 silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
-nnoremap <silent> <C-f> :call FindInNERDTree()<CR>
+"nnoremap <silent> <C-f> :call FindInNERDTree()<CR>
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
-"map to bufexplorer
-nnoremap <leader>b :BufExplorer<cr>
+"map to BufExplorer
+nmap <F5> <Esc>:BufExplorer<cr>
+vmap <F5> <esc>:BufExplorer<cr>
+imap <F5> <esc><esc>:BufExplorer<cr>
 
 "map to CommandT TextMate style finder
 nnoremap <leader>t :CommandT<CR>
@@ -305,32 +461,26 @@ nnoremap <F4> :GundoToggle<CR>
 
 "snipmate setup
 try
-  source ~/.vim/snippets/support_functions.vim
+  source ~/.vim/bundle/snipmate-snippets/support_functions.vim
+  autocmd vimenter * call s:SetupSnippets()
 catch
-  source ~/vimfiles/snippets/support_functions.vim
 endtry
-autocmd vimenter * call s:SetupSnippets()
-function! s:SetupSnippets()
 
+function! s:SetupSnippets()
     "if we're in a rails env then read in the rails snippets
     if filereadable("./config/environment.rb")
       try
-        call ExtractSnips("~/.vim/snippets/ruby-rails", "ruby")
-        call ExtractSnips("~/.vim/snippets/eruby-rails", "eruby")
+        call ExtractSnips("~/.vim/bundle/snipmate-snippets/ruby-rails", "ruby")
+        call ExtractSnips("~/.vim/bundle/snipmate-snippets/eruby-rails", "eruby")
       catch
-        call ExtractSnips("~/vimfiles/snippets/ruby-rails", "ruby")
-        call ExtractSnips("~/vimfiles/snippets/eruby-rails", "eruby")
       endtry
     endif
 
     try
-      call ExtractSnips("~/.vim/snippets/html", "eruby")
-      call ExtractSnips("~/.vim/snippets/html", "xhtml")
-      call ExtractSnips("~/.vim/snippets/html", "php")
+      call ExtractSnips("~/.vim/bundle/snipmate-snippets/html", "eruby")
+      call ExtractSnips("~/.vim/bundle/snipmate-snippets/html", "xhtml")
+      call ExtractSnips("~/.vim/bundle/snipmate-snippets/html", "php")
     catch
-      call ExtractSnips("~/vimfiles/snippets/html", "eruby")
-      call ExtractSnips("~/vimfiles/snippets/html", "xhtml")
-      call ExtractSnips("~/vimfiles/snippets/html", "php")
     endtry
 endfunction
 
@@ -402,8 +552,6 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
-
 "Enabling Zencoding
 let g:user_zen_settings = {
   \  'php' : {
@@ -421,3 +569,75 @@ let g:user_zen_settings = {
   \  },
  \}
 
+" for ctrlp
+map <Leader>o :CtrlP<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.scssc,*.sassc
+
+" Highlight whitespace problems.
+" flags is '' to clear highlighting, or is a string to
+" specify what to highlight (one or more characters):
+"   e  whitespace at end of line
+"   i  spaces used for indenting
+"   s  spaces before a tab
+"   t  tabs not at start of line
+function! ShowWhitespace(flags)
+  let bad = ''
+  let pat = []
+  for c in split(a:flags, '\zs')
+    if c == 'e'
+      call add(pat, '\s\+$')
+    elseif c == 'i'
+      call add(pat, '^\t*\zs \+')
+    elseif c == 's'
+      call add(pat, ' \+\ze\t')
+    elseif c == 't'
+      call add(pat, '[^\t]\zs\t\+')
+    else
+      let bad .= c
+    endif
+  endfor
+  if len(pat) > 0
+    let s = join(pat, '\|')
+    exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
+  else
+    syntax clear ExtraWhitespace
+  endif
+  if len(bad) > 0
+    echo 'ShowWhitespace ignored: '.bad
+  endif
+endfunction
+
+function! ToggleShowWhitespace()
+  if !exists('b:ws_show')
+    let b:ws_show = 0
+  endif
+  if !exists('b:ws_flags')
+    let b:ws_flags = 'est'  " default (which whitespace to show)
+  endif
+  let b:ws_show = !b:ws_show
+  if b:ws_show
+    call ShowWhitespace(b:ws_flags)
+  else
+    call ShowWhitespace('')
+  endif
+endfunction
+
+nnoremap <Leader>ws :call ToggleShowWhitespace()<CR>
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+
+if exists("syntax_on")
+    syntax reset
+endif
+
+hi clear
+
+set t_Co=256
+"let g:solarized_termcolors=256
+
+set background=dark
+
+"colorscheme vibrantink
+"colorscheme dark-ruby
+"colorscheme solarized
+colorscheme railscasts222
+"hi Normal ctermfg=White
