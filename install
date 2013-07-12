@@ -1,43 +1,83 @@
 #!/bin/bash
 
-user=$1
+#TODO: добавить force флаг, для установки без вопросов
+#TODO: передавать имя юзера/директорию через опции (как вариант)
+#TODO: передавать через опции, что мы хотим поставить (zsh, gitconfig, vim)
+#TODO: в интерактивном режиме спрашивать, хотим ли мы установить конфиги для zsh, vim, gitconfig
 
-if [ $user = "root" ]; then
-    user_home="/$user"
-elif [ -d "/Users" ]; then
-    user_home="/Users/$user"
-else
-    user_home="/home/$user"
+CURRENT_DIR=`pwd`
+
+echo "Enter your username:"
+read USER_NAME
+
+USER_HOME=$(eval echo ~${USER_NAME})
+if [ $USER_HOME == "~$USER_NAME" ]; then
+    echo "Can't get the home directory for '$USER_NAME'. Please, enter directory to install:"
+    read USER_HOME
 fi
 
-#vim setup
-if [ -d "$user_home/.vim" ]; then
-    mv "$user_home/.vim" "$user_home/.vim.backup"
+##TODO: переписать проверку )
+if [[ ! ( -d "$USER_HOME") && ($? != true) ]]; then
+    echo "ERROR: Directory $USER_HOME doesn't exist"
+    exit 1
 fi
-cp -R vimfiles $user_home/.vim/
 
-if [ -e "$user_home/.vimrc" ]; then
-    mv "$user_home/.vimrc" "$user_home/.vimrc.backup"
+##vim setup
+TIMESTAMP=`date +%s`
+if [ -e "$USER_HOME/.vim" ]; then
+    mv "$USER_HOME/.vim" "$USER_HOME/.vim.backup.$TIMESTAMP"
 fi
-cp -f ./vimrc $user_home/.vimrc
+echo "Initialize '$USER_HOME/.vim/'"
+cp -R vimfiles $USER_HOME/.vim/
+#echo "Initialize submodule..."
+#cd $USER_HOME/.vim/
+#exec 'git submodule update --init'
 
-#shell setup
-if [ -d "$user_home/.zshkit" ]; then
-    mv "$user_home/.zshkit" "$user_home/.zshkit.backup"
+if [ -e "$USER_HOME/.vimrc" ]; then
+    mv "$USER_HOME/.vimrc" "$USER_HOME/.vimrc.backup.$TIMESTAMP"
 fi
-cp -R ./zshkit $user_home/.zshkit
+echo "Initialize '$USER_HOME/.vimrc'"
+cp -f ./vimrc $USER_HOME/.vimrc
 
-if [ -e "$user_home/.zshrc" ]; then
-    mv "$user_home/.zshrc" "$user_home/.zshrc.backup"
+##shell setup
+if [ -d "$USER_HOME/.zshkit" ]; then
+    mv "$USER_HOME/.zshkit" "$USER_HOME/.zshkit.backup.$TIMESTAMP"
 fi
-cp -f ./zshrc $user_home/.zshrc
+echo "Initialize '$USER_HOME/.zshkit'"
+cp -R ./zshkit $USER_HOME/.zshkit
 
-if [ -e "$user_home/.zshenv" ]; then
-    mv "$user_home/.zshenv" "$user_home/.zshenv.backup"
+if [ -e "$USER_HOME/.zshrc" ]; then
+    mv "$USER_HOME/.zshrc" "$USER_HOME/.zshrc.backup.$TIMESTAMP"
 fi
-cp -f ./zshenv $user_home/.zshenv
+echo "Initialize $USER_HOME/.zshrc"
+cp -f ./zshrc $USER_HOME/.zshrc
 
-if [ -e "$user_home/.zshrc.local" ]; then
-    mv "$user_home/.zshrc.local" "$user_home/.zshrc.local.backup"
+if [ -e "$USER_HOME/.zshenv" ]; then
+    mv "$USER_HOME/.zshenv" "$USER_HOME/.zshenv.backup.$TIMESTAMP"
 fi
-cp -f ./zshrc.local $user_home/.zshrc.local
+echo "Initialize $USER_HOME/.zshenv"
+cp -f ./zshenv $USER_HOME/.zshenv
+
+if [ -e "$USER_HOME/.zshrc.local" ]; then
+    mv "$USER_HOME/.zshrc.local" "$USER_HOME/.zshrc.local.backup.$TIMESTAMP"
+fi
+echo "Initialize $USER_HOME/.zshrc.local"
+cp -f ./zshrc.local $USER_HOME/.zshrc.local
+
+##gitconfig setup
+cp -f ./gitconfig $USER_HOME/.gitconfig
+cp -f ./gitignore $USER_HOME/.gitignore
+
+git config --global core.excludesfile $USER_HOME/.gitignore
+
+echo "Enter your git name:"
+read GIT_USER_NAME
+git config --global user.name $GIT_USER_NAME
+
+echo "Enter your git email:"
+read GIT_USER_EMAIL
+git config --global user.email $GIT_USER_EMAIL
+
+echo "Enter your github email:"
+read GITHUB_USER_EMAIL
+git config --global github.user $GITHUB_USER_EMAIL
