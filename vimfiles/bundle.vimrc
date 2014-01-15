@@ -3,8 +3,9 @@ Bundle 'gorkunov/smartgf.vim'
 Bundle 'gorkunov/smartpairs.vim'
 Bundle 'Townk/vim-autoclose'
 
-Bundle 'vim-scripts/ScreenShot'
 Bundle 'vim-scripts/grep.vim'
+Bundle 'oscarh/vimerl'
+Bundle "pangloss/vim-javascript"
 
 Bundle 'asux/vim-capybara.git'
 Bundle 'endel/actionscript.vim.git'
