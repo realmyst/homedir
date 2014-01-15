@@ -318,16 +318,16 @@ function! s:Median(nums)
 endfunction
 
 "indent settings
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set expandtab
 set autoindent
 
 " Включаем "умные" отспупы ( например, автоотступ после {)
 set smartindent
 
-au FileType ruby,scss,cucumber set shiftwidth=2
+au FileType ruby,scss,cucumber,js set shiftwidth=2
 au FileType ruby,scss,cucumber set softtabstop=2
 au FileType ruby,scss,cucumber set tabstop=2
 
