@@ -436,6 +436,8 @@ imap <F5> <esc><esc>:BufExplorer<cr>
 "map to CommandT TextMate style finder
 nnoremap <leader>t :CommandT<CR>
 
+vnoremap p "_dP"
+
 "map Q to something useful
 noremap Q gq
 
