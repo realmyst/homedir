@@ -180,6 +180,7 @@ au BufRead,BufNewFile *.hrl set filetype=erlang
 au BufRead,BufNewFile *.scss set filetype=sass
 au BufNewFile,BufRead *.php let b:optionsset=0
 au BufNewFile,BufRead *.php let b:PHP_autoformatcomment=0
+au Bufnewfile,bufread *.slim set filetype=slim
 
 " Поиск и замена слова под курсором
 "nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/

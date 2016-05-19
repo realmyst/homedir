@@ -48,6 +48,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-rails'
+Bundle 'slim-template/vim-slim.git'
 
 "snippets
 Bundle 'honza/vim-snippets'
