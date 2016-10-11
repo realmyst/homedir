@@ -10,17 +10,52 @@ set nowrap
 filetype on
 filetype off
 
-"load ftplugins and indent files
-filetype plugin on
-filetype indent on
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+"Bundle 'gmarik/vundle'
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+"if filereadable(expand("~/.vim/bundle.vimrc"))
+  "source ~/.vim/bundle.vimrc
+"endif
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin('~/.vim/')
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
 
 if filereadable(expand("~/.vim/bundle.vimrc"))
-  source ~/.vim/bundle.vimrc
+	source ~/.vim/bundle.vimrc
 endif
+
+" You can specify revision/branch/tag.
+"call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+	call dein#install()
+endif
+
+"End dein Scripts-------------------------
 
 " allow to use backspace instead of "x"
 set backspace=indent,eol,start whichwrap+=<,>,[,]
@@ -361,9 +396,6 @@ set formatoptions-=o "dont continue comments when pushing o/O
 set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
-
-"turn on syntax highlighting
-syntax on
 
 "some stuff to get the mouse going in term
 set mouse=v
