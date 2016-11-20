@@ -49,6 +49,7 @@ call dein#add('tpope/vim-haml')
 call dein#add('tpope/vim-cucumber')
 call dein#add('tpope/vim-rails')
 call dein#add('slim-template/vim-slim.git')
+call dein#add('elixir-lang/vim-elixir')
 
 "snippets
 call dein#add('honza/vim-snippets')
