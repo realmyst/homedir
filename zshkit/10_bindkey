@@ -1,8 +1,8 @@
 
-bindkey "${key[Home]}" beginning-of-line
-bindkey "${key[End]}" end-of-line
-bindkey -e "${key[Up]}" history-beginning-search-backward
-bindkey -e "${key[Down]}" history-beginning-search-forward
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^N" down-line-or-search
+bindkey "^P" up-line-or-search
 if [[ $uname = "FreeBSD" ]]; then
     bindkey -e "\e[1~" beginning-of-line
     bindkey -e "\e[4~" end-of-line
