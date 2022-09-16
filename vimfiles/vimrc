@@ -645,3 +645,13 @@ set background=dark
 "colorscheme solarized
 colorscheme railscasts222
 "hi Normal ctermfg=White
+autocmd FileType javascript noremap <buffer>  <Leader>ff :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <Leader>ff :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <Leader>ff :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <Leader>ff :call HtmlBeautify()<cr>
+autocmd FileType eelixir noremap <buffer> <Leader>ff :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <Leader>ff :call CSSBeautify()<cr>
